@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yt-download"
+version = "1.0.0"
+description = "Batteries-included YouTube video/audio downloader with automatic proxy, JS runtime and ffmpeg detection."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "yt-download contributors" }]
+keywords = ["youtube", "downloader", "yt-dlp", "video", "audio", "cli", "scraper"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Internet :: WWW/HTTP",
+]
+dependencies = ["yt-dlp>=2024.1.1"]
+
+[project.optional-dependencies]
+# 浏览器指纹模拟，能显著降低被 YouTube 风控拦截的概率
+impersonate = ["curl_cffi>=0.6"]
+dev = ["pytest>=7", "ruff>=0.5"]
+
+[project.urls]
+Homepage = "https://github.com/biolmz/yt-download"
+Repository = "https://github.com/biolmz/yt-download"
+Issues = "https://github.com/biolmz/yt-download/issues"
+Changelog = "https://github.com/biolmz/yt-download/blob/main/CHANGELOG.md"
+
+[project.scripts]
+yt-download = "yt_download:main"
+
+[tool.setuptools]
+py-modules = ["yt_download"]
+
+[tool.ruff]
+line-length = 110
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

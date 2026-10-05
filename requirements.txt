@@ -1,0 +1,5 @@
+# 运行必需
+yt-dlp>=2024.1.1
+
+# 可选：启用浏览器指纹模拟（impersonation），降低 YouTube 风控概率
+curl_cffi>=0.6
